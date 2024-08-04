@@ -21,13 +21,10 @@ export const App = () => {
 
   return (
     <main className="section container">
-      {selectedGood === '' ? (
-        <h1 className="title is-flex is-align-items-center">
-          No goods selected
-        </h1>
-      ) : (
-        <h1 className="title is-flex is-align-items-center">
-          {selectedGood} is selected
+      <h1 className="title is-flex is-align-items-center">
+        {selectedGood ? `${selectedGood} is selected` : 'No goods selected'}
+
+        {selectedGood && (
           <button
             data-cy="ClearButton"
             type="button"
@@ -36,8 +33,8 @@ export const App = () => {
               setSelectedGood('');
             }}
           />
-        </h1>
-      )}
+        )}
+      </h1>
 
       <table className="table">
         <tbody>
@@ -80,47 +77,6 @@ export const App = () => {
           })}
         </tbody>
       </table>
-      {/* <table className="table">
-        <tbody>
-          <tr data-cy="Good" className="has-background-success-light">
-            <td>
-              <button
-                data-cy="RemoveButton"
-                type="button"
-                className="button is-info"
-                onClick={() => {
-                  setSelectedGood('Jam');
-                }}
-              >
-                -
-              </button>
-            </td>
-
-            <td data-cy="GoodTitle" className="is-vcentered">
-              Jam
-            </td>
-          </tr>
-
-          <tr data-cy="Good">
-            <td>
-              <button
-                data-cy="AddButton"
-                type="button"
-                className="button"
-                onClick={() => {
-                  setSelectedGood('Garlic');
-                }}
-              >
-                +
-              </button>
-            </td>
-
-            <td data-cy="GoodTitle" className="is-vcentered">
-              Garlic
-            </td>
-          </tr>
-        </tbody>
-      </table> */}
     </main>
   );
 };
